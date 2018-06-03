@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.File;
 
+import com.classcourse.soundGenerator.WaveAccess.WaveFileReader;
+
 @RestController
 public class SoundGeneratorController {
 
@@ -55,5 +57,14 @@ public class SoundGeneratorController {
         return "Success Uploading " + returnStr + "!";
     }
 
+    @RequestMapping(value = "/testAnalyze", method = RequestMethod.GET)
+    public String testAnalyzeSound () {
+        String result = "Success!";
+        WaveFileReader reader = new WaveFileReader("/Users/cplayer/Downloads/record.wav");
+        int[][] data = reader.getData();
+        System.out.println(data.length);
+        System.out.println(data[0].length);
+        return result;
+    }
 
 }
